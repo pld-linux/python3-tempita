@@ -8,7 +8,7 @@ Summary:	A very small text templating language
 Summary(pl.UTF-8):	Bardzo mały język szablonów tekstu
 Name:		python-%{module}
 Version:	0.5.2
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Languages/Python
 Source0:	https://files.pythonhosted.org/packages/source/T/Tempita/%{module}-%{version}.tar.gz
@@ -19,7 +19,7 @@ BuildRequires:	python-modules >= 1:2.5
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-2to3 >= 1:3.2
+BuildRequires:	python3-fissix
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	python3-setuptools
 BuildRequires:	sed >= 4.0
@@ -54,7 +54,7 @@ Bardzo mały język szablonów tekstu.
 install -d py3
 cp -p setup.cfg setup.py py3
 %{__sed} -i -e '/use_2to3=/d' py3/setup.py
-2to3-%{py3_ver} tempita -o py3/tempita -n -W
+%{__python3} -m fissix tempita -o py3/tempita -n -W
 %endif
 
 %build
